@@ -3,16 +3,20 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>First_blog</title>
+        <title>homely blog</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
     </head>
 
     <body>
         <div class="page-header">
-            <h1><a href="">First Django site</a></h1>
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+            <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+            <h1><a href="">first dgango app</a></h1>
         </div>
         <div class="content container">
             <div class="row">
