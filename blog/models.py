@@ -47,7 +47,7 @@ class Comment(models.Model):
     approved_comment = models.BooleanField(default=False)
 
     def approve(self):
-        '''  '''
+        ''' Функция одобрения комментария '''
 
         self.approved_comment = True
         self.save()

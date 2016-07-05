@@ -18,6 +18,7 @@ def post_list(request):
 
 def post_detail(request, pk):
     ''' Функция представления одной записи '''
+    # pk - primary key, номер поста (post id)
 
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
@@ -25,7 +26,7 @@ def post_detail(request, pk):
 
 @login_required
 def post_new(request):
-    ''' Функция  '''
+    ''' Функция представления формы для новой записи '''
 
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -41,7 +42,7 @@ def post_new(request):
 
 @login_required
 def post_edit(request, pk):
-    '''  '''
+    ''' Функция представления  '''
 
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -58,7 +59,7 @@ def post_edit(request, pk):
 
 @login_required
 def post_draft_list(request):
-    '''  '''
+    ''' Функция представления неопубликованной записи '''
 
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
@@ -66,7 +67,7 @@ def post_draft_list(request):
 
 @login_required
 def post_publish(request, pk):
-    '''  '''
+    ''' Ф представелния записи готовой к публикации '''
 
     post = get_object_or_404(Post, pk=pk)
     post.publish()
@@ -75,7 +76,7 @@ def post_publish(request, pk):
 
 @login_required
 def post_remove(request, pk):
-    '''  '''
+    ''' Функция удаления записи '''
 
     post = get_object_or_404(Post, pk=pk)
     post.delete()
@@ -84,7 +85,7 @@ def post_remove(request, pk):
 #_____________________________________________________________
 
 def add_comment_to_post(request, pk):
-    '''  '''
+    ''' Функция представления комментариев к записи '''
 
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -101,7 +102,7 @@ def add_comment_to_post(request, pk):
 
 @login_required
 def comment_approve(request, pk):
-    '''  '''
+    ''' Функция представления одобренных комментариев '''
 
     comment = get_object_or_404(Comment, pk=pk)
     comment.approve()
@@ -109,7 +110,7 @@ def comment_approve(request, pk):
 
 @login_required
 def comment_remove(request, pk):
-    '''  '''
+    ''' Функция удаления комментариев '''
 
     comment = get_object_or_404(Comment, pk=pk)
     post_pk = comment.post.pk
