@@ -14,8 +14,8 @@ body {
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 36pt;
+    color: #00ba9d;
+    font-size: 60pt;
     text-decoration: none;
 }
 
@@ -53,4 +53,8 @@ h1, h2, h3, h4 {
 
 .post h1 a, .post h1 a:visited {
     color: #4f5a6e;
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
 }
